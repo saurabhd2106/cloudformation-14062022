@@ -1,0 +1,17 @@
+{
+    "name" : "Saurabh",
+    "email": "saurabh@gmail.com",
+    "phoneNumber": [456783, 475684],
+    "address" : [{
+ "addressType" : "home",
+"houseNumber" : 834,
+        "pincode": 243242
+    },
+    {
+
+        "addressType" : "home",
+        "houseNumber" : 834,
+        "pincode": 243242
+    }]
+
+}

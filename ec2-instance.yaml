@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: This is my first Cloud Formation deployment
+Parameters:
+  imageId:
+    Type: String
+    Description: This is a parameter to stop image id
+    Default: ami-09d56f8956ab235b3
+  InstanceType:
+    Type: String
+    Description: This is a paramete for vpc id
+  Password:
+    Type: String
+    Maxlength: 8
+    MinLength: 5
+    ConstraintDescription: This password can have value between 5 and 8 length
+  BooleanVar:
+    Type: String
+    AllowedValues:
+      - true
+      - false
+    ConstraintDescription: This variable is boolean and can have true or false
+Resources:
+  WebserverEc2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref imageId
+      InstanceType: !Ref InstanceType
+      SecurityGroupIds:
+        - Ref: SecurityGroup
+      Tags:
+        - 
+          Key: Name
+          Value: WebserverEc2Instance
+        - 
+          Key: Project
+          Value: My first Ec2 instance from Cloud Formation
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow http to client host
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
